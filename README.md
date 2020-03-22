@@ -15,9 +15,15 @@ s = corona.Info()
 print(s.get("cases"))  # returns Covid-19 cases
 
 Function available arguments:
-    • deaths          - Deaths
-    • cases           - Total Cases
-    • curr_infected   - Currently Infected
-    • mild_infected   - Mild conditions
-    • crit_infected   - Critical conditions
-    • recoveries      - Total Recoveries
+    • deaths          
+       - Deaths
+    • cases           
+       - Total Cases
+    • curr_infected   
+       - Currently Infected
+    • mild_infected   
+       - Mild conditions
+    • crit_infected   
+       - Critical conditions
+    • recoveries      
+       - Total Recoveries
