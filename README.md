@@ -10,4 +10,4 @@ https://en.wikipedia.org/wiki/2019%E2%80%9320_coronavirus_pandemic_by_country_an
 
 
 import corona
-s = corona.Info()
+s = corona.Initialize()
