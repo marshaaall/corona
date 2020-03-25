@@ -12,7 +12,7 @@ import re
     • recoveries      - Total Recoveries
 
 .get_by_country(country, data) function available arguments
-    • country - Any country affected with CVODI-19
+    • country - Any country affected with COVID-19
     • data    - cases, recovered, deaths
 """
 
@@ -29,7 +29,8 @@ class Initialize:
         return info[g]
 
     def get_by_country(self, country, d):
-        table = self.soup.get_text().strip()[8780:14470].split("\n\n\n\n\n")
+        table_temp = self.soup.get_text().strip()
+        table = table_temp[table_temp.index("China (mainland)[d]"):table_temp.index("[201]\n\n\nAs of ")].split("\n\n\n\n\n")
         t = {}
         for i in table:
             data = i.split("\n\n")[1:4]
@@ -45,7 +46,7 @@ class Initialize:
         elif d == "recoveries":
             return t[country][2]
         else:
-            raise ValueError("Country not found...")
+            raise ValueError("Invalid parameter for data...")
 
 if __name__ == "__main__":
     print("This code is not designed to be run directly")
