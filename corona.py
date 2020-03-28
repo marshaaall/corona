@@ -19,10 +19,10 @@ import re
 
 class Initialize:
     def __init__(self):
-        self.web = urllib.request.urlopen('https://www.worldometers.info/coronavirus/')
-        self.web2 = urllib.request.urlopen("https://en.wikipedia.org/wiki/2019%E2%80%9320_coronavirus_pandemic_by_country_and_territory")
-        self.cases = re.findall(r'[\d]{1,3},[\d]{3}', str(self.web.read()))
-        self.soup = BeautifulSoup(self.web2.read(), 'html.parser')
+        self.web = Request('https://www.worldometers.info/coronavirus/', headers={'User-Agent': 'Mozilla/5.0'})
+        self.web2 = Request('https://en.wikipedia.org/wiki/2019%E2%80%9320_coronavirus_pandemic_by_country_and_territory', headers = {'User-Agent': 'Mozilla/5.0'})
+        self.cases = re.findall(r'[\d]{1,3},[\d]{3}', str(urlopen(self.web).read()))
+        self.soup = BeautifulSoup(urlopen(self.web2).read(), 'html.parser')
     
     def get(self, g):
         info = {"deaths": self.cases[1], "cases": self.cases[0], "curr_infected": self.cases[5], "mild_infected": self.cases[6], "crit_infected": self.cases[7], "recoveries": self.cases[4]}
